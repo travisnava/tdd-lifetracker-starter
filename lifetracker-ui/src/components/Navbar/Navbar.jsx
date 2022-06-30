@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 //component imports
 import NavLinks from "./NavLinks";
 
-export default function Navbar() {
+export default function Navbar(props) {
 
 
 
@@ -21,7 +21,7 @@ export default function Navbar() {
             </Link>
         </div>
         <div className="nav-links">
-            <NavLinks/>
+            <NavLinks activeUser = {props.activeUser}/>
         </div>
       </div>
     </nav>

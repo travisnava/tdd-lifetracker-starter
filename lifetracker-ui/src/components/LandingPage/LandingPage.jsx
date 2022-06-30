@@ -13,7 +13,7 @@ export default function LandingPage() {
         </div>
         <div className = "cta">
           <h1 className = "cta-title">Life Tracker</h1>
-          <h2 className = "cta-subheading">Helping you take back control of your world</h2>
+          <h2 className = "cta-subheading"><em>Helping you take back control of your world</em></h2>
         </div>
         <div className = "feature-icons">
           <span><i class="fa-solid fa-dumbbell fa-2xl"></i></span>

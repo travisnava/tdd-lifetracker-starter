@@ -14,3 +14,16 @@
     justify-content: space-between;
     width: 75%;
 }
+
+.hero-img {
+    border-radius: 50%;
+}
+
+
+.cta-title {
+    font-size: 52px;
+    font-weight: 800;
+}
+.cta-subheading {
+    font-weight: 400;
+}
