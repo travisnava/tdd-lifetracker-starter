@@ -1,6 +1,7 @@
 const express = require("express")
 const cors = require("cors")
 const morgan = require("morgan")
+
 const { NotFoundError } = require("./utils/errors")
 
 
@@ -21,6 +22,13 @@ app.use(morgan("tiny"))
 
 app.use("/auth", authRoutes)
 
+
+
+// health check
+app.get('/', (req, res) => {
+    res.status(200).json({ "ping" : "pong" })
+  })
+
 app.use((req, res, next) => {
     return next(new NotFoundError())
 })
@@ -35,10 +43,7 @@ app.use((err, req, res, next) => {
 })
 
 
-// health check
-app.get('/', (req, res) => {
-    res.status(200).json({ "ping" : "pong" })
-  })
+
 
 
   module.exports = app
