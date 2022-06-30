@@ -14,6 +14,8 @@ import RegistrationPage from "../RegistrationPage/RegistrationPage"
 import NotFound from "../NotFound/NotFound"
 import ActivityPage from "../ActivityPage/ActivityPage"
 import NutritionPage from "../NutritionPage/NutritionPage"
+import NutritionNew from "../NutritionNew/NutritionNew"
+import NutritionDetail from "../NutritionDetail/NutritionDetail"
 
 
 
@@ -25,7 +27,8 @@ export default function App() {
 
 //use state variables
 const [activeUser, setActiveUser] = useState(false)
-
+const [isLoading, setIsLoading] = useState(false)
+const [nutritions, setNutritions] = useState([])
 
 
 
@@ -44,10 +47,12 @@ const [activeUser, setActiveUser] = useState(false)
             <Navbar activeUser = {activeUser} />
             <Routes>
               <Route path = "/" element = {<LandingPage/>} />
-              <Route path = "/login" element = {<LoginPage/>} />
+              <Route path = "/login" element = {<LoginPage activeUser = {activeUser} setActiveUser = {setActiveUser}/>} />
               <Route path = "/register" element = {<RegistrationPage/>} />
               <Route path = "/activity" element = {<ActivityPage/>} />
-              <Route path = "/nutrition" element = {<NutritionPage/>} />
+              <Route path = "/nutrition" element = {<NutritionPage isLoading = {isLoading} nutritions = {nutritions}/>} />
+              <Route path = "/nutrition/create" element = {<NutritionNew/>} />
+              <Route path = "/nutrition/id/:nutritionId" element = {<NutritionDetail/>} />
 
 
               <Route path = "*" element = {<NotFound />}/> 

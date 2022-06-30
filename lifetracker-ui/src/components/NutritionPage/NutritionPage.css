@@ -1,0 +1,15 @@
+
+
+.nutrition-title-container {
+    width: 100%;
+    background-color: rgb(105, 131, 131);
+}
+
+
+
+
+.nutrition-title {
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+}

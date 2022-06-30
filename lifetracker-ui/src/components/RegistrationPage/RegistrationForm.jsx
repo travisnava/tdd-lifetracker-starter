@@ -1,20 +1,20 @@
 import * as React from "react"
 import "./RegistrationPage.css"
 
-
+import axios from "axios"
 
 //react imports
 import { useState } from "react"
-
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function RegistrationForm() {
 
 
-
+   //global var
+   let emptyForm = {email: "", username: "", firstName: "", lastName: "", password: "", passwordConfirm: ""}
 
   //use state variables
-  const [registerForm, setRegisterForm] = useState({email: "", username: "", firstName: "", lastName: "", password: "", passwordConfirm: ""})
+  const [registerForm, setRegisterForm] = useState(emptyForm)
 
 
 
@@ -28,7 +28,7 @@ export default function RegistrationForm() {
 
     function handleOnInputChange (evt) {
 
-        
+        // add error handling error or in submit handler
 
 
         setRegisterForm((form) => ({ ...form, [evt.target.name]: evt.target.value }))
@@ -36,7 +36,27 @@ export default function RegistrationForm() {
     }
 
 
+    async function  handleOnSubmitRegisterForm(){
+            
+            try {
+              const response = await axios.post("http://localhost:3001/auth/register", registerForm)
+              if (response.data) {
+                console.log("response data is:", response.data)
+              } else {
+                setError("Error registering your account")
+              }
+            } catch (error) {
+              console.log(error)
+            } 
+          
+    
 
+          setRegisterForm(emptyForm)
+          Navigate("/activity")
+        }
+    
+    
+      
 
 
 
@@ -55,7 +75,7 @@ export default function RegistrationForm() {
         </div>
         <div className ="form-input-container">
             <p className ="email-label">Email</p>
-            <input name = "email" className ="form-input" type="text" value = {registerForm.email} onChange = {handleOnInputChange}  placeholder ="student@codepath.org"/>
+            <input name = "email" className ="form-input" type="email" value = {registerForm.email} onChange = {handleOnInputChange}  placeholder ="student@codepath.org"/>
         </div>
         <div className ="form-input-container">
             <p className ="username-label">Username</p>
@@ -67,13 +87,13 @@ export default function RegistrationForm() {
         </div>
         <div className ="form-input-container">
             <p className ="password-label">Password</p>
-            <input name = "password" className ="form-input" type="text"  value = {registerForm.password} onChange = {handleOnInputChange} placeholder ="Enter a secure password"/>
+            <input name = "password" className ="form-input" type="password"  value = {registerForm.password} onChange = {handleOnInputChange} placeholder ="Enter a secure password"/>
         </div>
         <div className ="form-input-container">
             <p className ="confirm-password-label">Confirm Password</p>
-            <input name = "passwordConfirm" className ="form-input" type="text" value = {registerForm.passwordConfirm} onChange = {handleOnInputChange}  placeholder ="Confirm your password"/>
+            <input name = "passwordConfirm" className ="form-input" type="password" value = {registerForm.passwordConfirm} onChange = {handleOnInputChange}  placeholder ="Confirm your password"/>
         </div>
-        <button className = "submit-registration">Create Account</button>
+        <button className = "submit-registration" onClick={handleOnSubmitRegisterForm}>Create Account</button>
 
 
         <div className="login-redirect">

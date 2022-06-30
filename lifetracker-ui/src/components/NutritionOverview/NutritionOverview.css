@@ -1,0 +1,23 @@
+.create-nutrition-redirect {
+    margin-top: 1%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+
+}
+
+.record-link {
+    text-decoration: none;
+    color: black;
+}
+
+.record-nutrition {
+    display: flex;
+
+}
+.overview-title {
+    display: flex;
+
+    
+}
