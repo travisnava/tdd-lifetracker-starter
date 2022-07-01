@@ -28,7 +28,7 @@ console.log("Lifetracker Config:".green)
 console.log("PORT:".blue, PORT)
 console.log("SECRET_KEY".blue, SECRET_KEY)
 console.log("IS_TESTING".blue, IS_TESTING)
-console.log("BCRPYT_WORK_FACTOR".blue, BCRYPT_WORK_FACTOR)
+console.log("BCRYPT_WORK_FACTOR".blue, BCRYPT_WORK_FACTOR)
 console.log("Database URI:".blue, getDatabaseUri())
 console.log("---")
 

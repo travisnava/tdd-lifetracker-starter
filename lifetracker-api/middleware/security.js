@@ -5,7 +5,7 @@ const { UnauthorizedError } = require("../utils/errors")
 
 
 const jwtFrom = ({ headers }) => {
-    if (headers?.auhtorization) {
+    if (headers?.authorization) {
         const [scheme, token] = headers.authorization.split(" ")
         if (scheme.trim() === "Bearer") {
             return token

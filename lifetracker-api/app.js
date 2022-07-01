@@ -1,11 +1,8 @@
 const express = require("express")
 const cors = require("cors")
 const morgan = require("morgan")
-const security = require("./middleware/security")
-
 const { NotFoundError } = require("./utils/errors")
-
-
+const security = require("./middleware/security")
 
 const authRoutes = require("./routes/auth")
 const nutritionRoutes = require("./routes/nutrition")

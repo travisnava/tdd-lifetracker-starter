@@ -23,7 +23,7 @@ router.post("/", async (req, res, next) => {
     }
 })
 
-router.get("/:nuntritionId", async (req, res, next) => {
+router.get("/:nutritionId", async (req, res, next) => {
     try {
         //send json response back to client with nutrition instance that matches the nutritionId paramter
     }
