@@ -7,6 +7,7 @@ const { NotFoundError } = require("./utils/errors")
 
 
 const authRoutes = require("./routes/auth")
+const nutritionRoutes = require("./routes/nutrition")
 
 
 const app = express()
@@ -21,7 +22,7 @@ app.use(express.json())
 app.use(morgan("tiny"))
 
 app.use("/auth", authRoutes)
-
+app.use("/nutrition", nutritionRoutes)
 
 
 // health check
