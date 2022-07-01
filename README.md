@@ -1,6 +1,6 @@
 # Project #3: LifeTracker Application
 
-Submitted by: **NAME**
+Submitted by: **Travis Navarro**
 
 Deployed Application: [Lifetracker Deployed Site](ADD_LINK_HERE)
 
