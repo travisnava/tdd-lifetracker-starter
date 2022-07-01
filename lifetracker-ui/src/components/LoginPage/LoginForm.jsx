@@ -1,6 +1,6 @@
 import * as React from "react"
 import "./LoginPage.css"
-import axios from "axios"
+import apiClient from "../../services/apiClient"
 
 //react imports
 import { Link, useNavigate } from 'react-router-dom';
@@ -35,26 +35,36 @@ export default function LoginForm(props) {
 
 
 async function  handleOnSubmitLogin(setActiveUser){
-            
-  try {
-    const response = await axios.post("http://localhost:3001/auth/login", userLoginForm)
-    if (response.data) {
-      console.log("response data is:", response.data)
+       
+  
 
-      setUserLoginForm(emptyLoginForm)
-      navigate("/activity")
-      setError(null)
+  const {data, error} = await apiClient.loginUser(registerForm)
+  if (error) {
+    setError(error)
+  }
+  if(data?.user)
+  apiClient.setToken(data.token)
+
+
+  // try {
+  //   const response = await axios.post("http://localhost:3001/auth/login", userLoginForm)
+  //   if (response.data) {
+  //     console.log("response data is:", response.data)
+
+  //     setUserLoginForm(emptyLoginForm)
+  //     navigate("/activity")
+  //     setError(null)
 
  
-    } else {
-      setError("Error logging in")
+  //   } else {
+  //     setError("Error logging in")
 
 
-    }
-  } catch (err) {
-    setError(err.response.data.error.message)
-    console.log(error)
-  } 
+  //   }
+  // } catch (err) {
+  //   setError(err.response.data.error.message)
+  //   console.log(error)
+  // } 
 
 
 }

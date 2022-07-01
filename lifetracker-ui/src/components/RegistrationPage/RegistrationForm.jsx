@@ -1,7 +1,7 @@
 import * as React from "react"
 import "./RegistrationPage.css"
 
-import axios from "axios"
+import apiClient from "../../services/apiClient"
 
 //react imports
 import { useState } from "react"
@@ -40,18 +40,27 @@ export default function RegistrationForm() {
 
     async function  handleOnSubmitRegisterForm(){
             
-      try {
-        const response = await axios.post("http://localhost:3001/auth/register", registerForm)
-        if (response.data) {
-          console.log("response data is:", response.data)
-          navigate("/activity")
-        } else {
-          setError("Error registering your account")
-        }
-      } catch (err) {
-        setError(err.response.data.error.message)
-        console.log(error)
-      } 
+
+
+      const {data, error} = await apiClient.signupUser(registerForm)
+      if (error) {
+        setError(error)
+      }
+      if(data?.user)
+      apiClient.setToken(data.token)
+
+      // try {
+      //   const response = await axios.post("http://localhost:3001/auth/register", registerForm)
+      //   if (response.data) {
+      //     console.log("response data is:", response.data)
+      //     navigate("/activity")
+      //   } else {
+      //     setError("Error registering your account")
+      //   }
+      // } catch (err) {
+      //   setError(err.response.data.error.message)
+      //   console.log(error)
+      // } 
     
 
 
