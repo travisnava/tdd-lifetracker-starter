@@ -6,7 +6,7 @@ import "./NutritionForm.css"
 
 //react imports
 import { useState } from "react"
-import { Navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 
 export default function NutritionForm() {
@@ -15,7 +15,8 @@ export default function NutritionForm() {
 
 
   //use state variables
-  const [nutritionForm, setNutritionForm] = useState({name: "", category: "", calories: 0, quantity: 0, imageURL: ""})
+  const navigate = useNavigate
+  const [nutritionForm, setNutritionForm] = useState({name: "", category: "", calories: 0, imageURL: ""})
 
 
 
@@ -45,7 +46,7 @@ async function  handleOnSubmitNutritionForm(){
   
 
 
-  Navigate("/nutrition")
+  navigate("/nutrition")
 }
 
 
