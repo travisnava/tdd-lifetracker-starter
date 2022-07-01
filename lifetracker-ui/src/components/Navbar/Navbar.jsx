@@ -21,7 +21,7 @@ export default function Navbar(props) {
             </Link>
         </div>
         <div className="nav-links">
-            <NavLinks activeUser = {props.activeUser}/>
+            <NavLinks/>
         </div>
       </div>
     </nav>

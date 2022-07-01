@@ -1,12 +1,13 @@
 const express = require("express")
 const Nutrition = require("../models/nutrition")
 const security = require("../middleware/security")
+const permissions = require("../middleware/permissions")
 const router = express.Router()
 
 
 
 
-router.get("/", async (req, res, next) => {
+router.get("/", permissions.authedUserOwnsNutrition, async (req, res, next) => {
     try {
         //send json response to client with all of the user-owned nutrition instances in an array
 
@@ -31,7 +32,7 @@ router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
     }
 })
 
-router.get("/:nutritionId", async (req, res, next) => {
+router.get("/:nutritionId", permissions.authedUserOwnsNutrition, async (req, res, next) => {
     try {
         //send json response back to client with nutrition instance that matches the nutritionId paramter
         const { nutritionId } = req.params

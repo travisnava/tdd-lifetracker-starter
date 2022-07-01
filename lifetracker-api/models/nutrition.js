@@ -51,6 +51,7 @@ class Nutrition {
                        n.calories,
                        n.quantity,
                        n.image_url,
+                       u.email AS "userEmail",
                        n.created_at
                 FROM nutrition AS n
                     LEFT JOIN users AS u ON u.id = n.user_id

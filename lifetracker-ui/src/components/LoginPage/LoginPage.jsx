@@ -7,7 +7,7 @@ import LoginForm from "./LoginForm"
 export default function LoginPage(props) {
   return (
     <div className="login-page">
-      <LoginForm activeUser = {props.activeUser} setActiveUser = {props.setActiveUser}/>
+      <LoginForm />
 
     </div>
   )

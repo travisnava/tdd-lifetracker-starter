@@ -26,7 +26,8 @@ export default function App() {
 
 
 //use state variables
-const [activeUser, setActiveUser] = useState(false)
+
+const [user, setUser] = useState({})
 const [isLoading, setIsLoading] = useState(false)
 const [nutritions, setNutritions] = useState([])
 
@@ -44,10 +45,10 @@ const [nutritions, setNutritions] = useState([])
       <React.Fragment>
         <BrowserRouter>
           <main>
-            <Navbar activeUser = {activeUser} />
+            <Navbar />
             <Routes>
               <Route path = "/" element = {<LandingPage/>} />
-              <Route path = "/login" element = {<LoginPage activeUser = {activeUser} setActiveUser = {setActiveUser}/>} />
+              <Route path = "/login" element = {<LoginPage/>} />
               <Route path = "/register" element = {<RegistrationPage/>} />
               <Route path = "/activity" element = {<ActivityPage/>} />
               <Route path = "/nutrition" element = {<NutritionPage isLoading = {isLoading} nutritions = {nutritions}/>} />

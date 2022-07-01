@@ -16,7 +16,7 @@ export default function NutritionForm() {
 
   //use state variables
   const navigate = useNavigate
-  const [nutritionForm, setNutritionForm] = useState({name: "", category: "", calories: 0, imageURL: ""})
+  const [nutritionForm, setNutritionForm] = useState({name: "", category: "", calories: 0, quantity: 1, imageURL: ""})
 
 
 
@@ -33,16 +33,16 @@ export default function NutritionForm() {
 
 async function  handleOnSubmitNutritionForm(){
             
-    // try {
-    //   const response = await axios.post("http://localhost:3001/auth/register", registerForm)
-    //   if (response.data) {
-    //     console.log("response data is:", response.data)
-    //   } else {
-    //     setError("Error registering your account")
-    //   }
-    // } catch (error) {
-    //   console.log(error)
-    // } 
+    try {
+      const response = await axios.post("http://localhost:3001/nutrition/", nutritionForm)
+      if (response.data) {
+        console.log("response data is:", response.data)
+      } else {
+        setError("Error creating nutrition")
+      }
+    } catch (error) {
+      console.log(error)
+    } 
   
 
 
