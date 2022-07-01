@@ -43,14 +43,17 @@ async function  handleOnSubmitLogin(setActiveUser){
 
       setUserLoginForm(emptyLoginForm)
       navigate("/activity")
+      setError(null)
 
  
     } else {
       setError("Error logging in")
 
+
     }
   } catch (err) {
-    console.log(err)
+    setError(err.response.data.error.message)
+    console.log(error)
   } 
 
 
@@ -79,7 +82,7 @@ async function  handleOnSubmitLogin(setActiveUser){
             <input name = "password" className ="form-input" type="password" value = {userLoginForm.password} onChange={handleOnInputChange}  placeholder ="password"/>
         </div>
         <button className = "submit-login" onClick = {handleOnSubmitLogin}>Login</button>
-
+        {error? <p className ="login-error">{error}</p>: null}
         <div className="register-redirect">
             <p>Don't have an account? Register <Link to ="/register">here</Link></p>
       </div>

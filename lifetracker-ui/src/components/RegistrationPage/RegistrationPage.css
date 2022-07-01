@@ -15,3 +15,7 @@
 .login-redirect {
     margin-top: 5%;
 }
+
+.register-error {
+    color: red;
+}

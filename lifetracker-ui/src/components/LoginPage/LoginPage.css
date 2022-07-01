@@ -11,3 +11,8 @@ p {
 .form-input-container {
     margin-top: 1%;
 }
+
+
+.login-error {
+    color: red;
+}

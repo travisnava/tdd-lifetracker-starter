@@ -3,13 +3,16 @@ require("colors")
 
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3001
 
+const IS_TESTING = process.env.NODE_ENV === "test"
+
 function getDatabaseUri() {
     const dbUser = process.env.DATABASE_USER || "postgres"
     const dbPass = process.env.DATABASE_PASS ? encodeURI(process.env.DATABASE_PASS) : "postgres"
     const dbHost = process.env.DATABASE_HOST || "localhost"
     const dbPort = process.env.DATABASE_PORT || 5432
-    const dbName = process.env.DATABASE_NAME || "lifetracker"
     const dbTestName = process.env.DATABASE_TEST_NAME || "lifetracker_test"
+    const dbProdName = process.env.DATABASE_NAME || "lifetracker"
+    const dbName = process.env.NODE_ENV === "test" ? dbTestName : dbProdName
 
 
 
@@ -22,6 +25,8 @@ const BCRYPT_WORK_FACTOR = 13
 
 console.log("Lifetracker Config:".green)
 console.log("PORT:".blue, PORT)
+console.log("IS_TESTING".blue, IS_TESTING)
+console.log("BCRPYT_WORK_FACTOR".blue, BCRYPT_WORK_FACTOR)
 console.log("Database URI:".blue, getDatabaseUri())
 console.log("---")
 

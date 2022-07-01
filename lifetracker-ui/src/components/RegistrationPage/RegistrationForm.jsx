@@ -5,7 +5,7 @@ import axios from "axios"
 
 //react imports
 import { useState } from "react"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function RegistrationForm() {
 
@@ -14,7 +14,9 @@ export default function RegistrationForm() {
    let emptyForm = {email: "", username: "", firstName: "", lastName: "", password: "", passwordConfirm: ""}
 
   //use state variables
+  const navigate = useNavigate()
   const [registerForm, setRegisterForm] = useState(emptyForm)
+  const [error, setError] = useState(null)
 
 
 
@@ -38,22 +40,24 @@ export default function RegistrationForm() {
 
     async function  handleOnSubmitRegisterForm(){
             
-            try {
-              const response = await axios.post("http://localhost:3001/auth/register", registerForm)
-              if (response.data) {
-                console.log("response data is:", response.data)
-              } else {
-                setError("Error registering your account")
-              }
-            } catch (error) {
-              console.log(error)
-            } 
-          
+      try {
+        const response = await axios.post("http://localhost:3001/auth/register", registerForm)
+        if (response.data) {
+          console.log("response data is:", response.data)
+          navigate("/activity")
+        } else {
+          setError("Error registering your account")
+        }
+      } catch (err) {
+        setError(err.response.data.error.message)
+        console.log(error)
+      } 
     
 
-          setRegisterForm(emptyForm)
-          Navigate("/activity")
-        }
+
+    setRegisterForm(emptyForm)
+
+  }
     
     
       
@@ -94,6 +98,7 @@ export default function RegistrationForm() {
             <input name = "passwordConfirm" className ="form-input" type="password" value = {registerForm.passwordConfirm} onChange = {handleOnInputChange}  placeholder ="Confirm your password"/>
         </div>
         <button className = "submit-registration" onClick={handleOnSubmitRegisterForm}>Create Account</button>
+        {error? <p className ="register-error">{error}</p>: null}
 
 
         <div className="login-redirect">
