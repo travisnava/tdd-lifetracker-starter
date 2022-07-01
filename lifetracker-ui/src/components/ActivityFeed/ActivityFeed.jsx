@@ -1,6 +1,9 @@
 import * as React from "react"
 import "./ActivityFeed.css"
 
+//react imports
+import { Link } from "react-router-dom"
+
 export default function ActivityFeed() {
   return (
     <div className="activity-feed">
@@ -11,7 +14,7 @@ export default function ActivityFeed() {
             <span className = "feed-button-container">
                 <button className ="exercise-btn">Add Exercise</button>
                 <button className = "sleep-btn">Log Sleep</button>
-                <button className ="nutrition-btn">Record Nutrition</button>
+                <Link to ="/nutrition/create"><button className ="nutrition-btn">Record Nutrition</button></Link>
             </span>
         </div>
     </div>

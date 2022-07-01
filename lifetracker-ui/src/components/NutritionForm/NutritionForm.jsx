@@ -9,15 +9,16 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 
-export default function NutritionForm() {
+export default function NutritionForm(props) {
 
 
 
 
   //use state variables
-  const navigate = useNavigate
+  const navigate = useNavigate()
   const [nutritionForm, setNutritionForm] = useState({name: "", category: "", calories: 0, quantity: 1, image_url: ""})
   const [error, setError] = useState(null)
+  const [success, setSuccess] = useState(false)
 
 
 
@@ -46,8 +47,24 @@ const handleOnSubmitNutritionForm = async () => {
   }
   if(data){
     console.log(data)
+    setSuccess(true)
     navigate("/nutrition")
   }
+
+  // const {nutritionList, listError} = await apiClient.listNutritionForUser()
+  //   if(nutritionList){
+  //     console.log("nutritionList", nutritionList)
+  //     props.setNutritions(nutritionList)
+  //     
+
+  //   }
+  //   if(listError){
+  //     setError(listError)
+  //   }
+
+  
+
+
 
 
   

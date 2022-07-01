@@ -4,6 +4,7 @@ class ApiClient {
     constructor(remoteHostUrl){
         this.remoteHostUrl = remoteHostUrl
         this.token = null
+        this.tokenName = "lifetracker_token"
     }
 
 
@@ -13,6 +14,7 @@ class ApiClient {
 
     setToken(token){
         this.token = token
+        localStorage.setItem(this.tokenName, token)
     }
 
 
@@ -58,11 +60,12 @@ class ApiClient {
     }
 
     async fetchUserFromToken() {
-        return await this.request({ endpoint: `auth/me`, method: `POST`})
+        return await this.request({ endpoint: `auth/me`, method: `GET`})
     }
 
     async logoutUser() {
         this.setToken(null)
+        localStorage.setItem(this.tokenName, "")
     }
 
 

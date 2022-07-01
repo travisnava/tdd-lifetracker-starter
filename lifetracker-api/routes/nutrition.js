@@ -7,11 +7,11 @@ const router = express.Router()
 
 
 
-router.get("/", permissions.authedUserOwnsNutrition, async (req, res, next) => {
+router.get("/",  async (req, res, next) => {
     try {
         //send json response to client with all of the user-owned nutrition instances in an array
-
-        const nutritions = await Nutrition.listNutritionForUser()
+        const { user } = res.locals
+        const nutritions = await Nutrition.listNutritionForUser(user)
         return res.status(201).json({ nutritions })
     }
     catch(err) {

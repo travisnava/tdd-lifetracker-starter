@@ -2,9 +2,11 @@ import * as React from "react"
 import "./App.css"
 
 
+
+
 //react imports
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 //component imports
 import Navbar from "../Navbar/Navbar"
@@ -16,6 +18,7 @@ import ActivityPage from "../ActivityPage/ActivityPage"
 import NutritionPage from "../NutritionPage/NutritionPage"
 import NutritionNew from "../NutritionNew/NutritionNew"
 import NutritionDetail from "../NutritionDetail/NutritionDetail"
+import apiClient from "../../services/apiClient"
 
 
 
@@ -29,8 +32,45 @@ export default function App() {
 
 const [user, setUser] = useState({})
 const [isLoading, setIsLoading] = useState(false)
+const [error, setError] = useState(null)
 const [nutritions, setNutritions] = useState([])
 
+
+
+
+
+useEffect(() => {
+  const fetchNutritions = async () => {
+    setIsLoading(true)
+    const {data, error} = await apiClient.listNutritionForUser()
+    if(data){
+      console.log("nutritions", nutritions)
+      setNutritions(data)
+    }
+    if(error){
+      setError(error)
+    }
+    setIsLoading(false)
+  }
+
+  fetchNutritions()
+}, [])
+
+
+useEffect(() => {
+  const fetchUser = async () => {
+    const {data, error} = await apiClient.fetchUserFromToken()
+    if (data) setUser (data.user)
+    if (error) setError(error)
+  }
+
+
+  const token = localStorage.getItem("lifetracker_token")
+  if(token) {
+    apiClient.setToken(token)
+    fetchUser()
+  }
+}, [])
 
 
 
@@ -55,8 +95,8 @@ const handleOnLogout = async () => {
               <Route path = "/login" element = {<LoginPage user = {user} setUser = {setUser}/>} />
               <Route path = "/register" element = {<RegistrationPage user = {user} setUser = {setUser}/>} />
               <Route path = "/activity" element = {<ActivityPage user = {user}/>} />
-              <Route path = "/nutrition" element = {<NutritionPage  user = {user} isLoading = {isLoading} nutritions = {nutritions}/>} />
-              <Route path = "/nutrition/create" element = {<NutritionNew/>} />
+              <Route path = "/nutrition" element = {<NutritionPage  user = {user} isLoading = {isLoading} nutritions = {nutritions} setNutritions = {setNutritions}/>} />
+              <Route path = "/nutrition/create" element = {<NutritionNew nutritions = {nutritions} setNutritions = {setNutritions}/>} />
               <Route path = "/nutrition/id/:nutritionId" element = {<NutritionDetail/>} />
 
 

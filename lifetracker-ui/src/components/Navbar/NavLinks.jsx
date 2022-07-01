@@ -32,9 +32,9 @@ export default function NavLinks(props) {
 }
 
 
-export function NavLink({navLink}) {
+export function NavLink({navLink, onClick}) {
   return (
-        <span className = "nav-link" label= {navLink}>{navLink}</span>
+        <span className = "nav-link" label= {navLink} onClick={onClick}>{navLink}</span>
   )
 }
 

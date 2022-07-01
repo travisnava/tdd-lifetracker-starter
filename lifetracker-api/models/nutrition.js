@@ -68,7 +68,7 @@ class Nutrition {
     }
 
 
-    static async listNutritionForUser() {
+    static async listNutritionForUser(user) {
         //fetches all nutrition instances belonging to a user 
         // throws not found if no instances found matching id
         const results = await db.query(
@@ -79,11 +79,12 @@ class Nutrition {
                        n.calories,
                        n.quantity,
                        n.image_url,
-                       n.created_at
+                       n.created_at,
+                       u.email AS "userEmail"
                 FROM nutrition AS n
-                    LEFT JOIN users AS u ON u.id = n.user_id
-                ORDER BY n.created_at DESC
-            `,
+                    RIGHT JOIN users AS u ON u.id = n.user_id
+                WHERE u.email = $1
+            `, [user.email]
         )
         return results.rows
 
