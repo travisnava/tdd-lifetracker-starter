@@ -34,16 +34,27 @@ export default function LoginForm(props) {
 
 
 
-async function  handleOnSubmitLogin(setActiveUser){
-       
-  
 
-  const {data, error} = await apiClient.loginUser(registerForm)
+
+const handleOnSubmitLogin = async () => {
+  setError(null)
+  const {data, error} = await apiClient.loginUser(userLoginForm)
   if (error) {
     setError(error)
   }
-  if(data?.user)
-  apiClient.setToken(data.token)
+  if(data?.user){
+    props.setUser(data.user)
+    apiClient.setToken(data.token)
+    navigate("/activity")
+  }
+
+}
+
+  
+  
+
+
+
 
 
   // try {
@@ -67,7 +78,7 @@ async function  handleOnSubmitLogin(setActiveUser){
   // } 
 
 
-}
+
 
 
 

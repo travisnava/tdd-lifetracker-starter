@@ -46,6 +46,9 @@ class ApiClient {
 
 
 
+
+    
+
     async loginUser(credentials) {
         return await this.request({ endpoint: `auth/login`, method: `POST`, data: credentials })
     }
@@ -53,7 +56,30 @@ class ApiClient {
     async signupUser(credentials) {
         return await this.request({ endpoint: `auth/register`, method: `POST`, data: credentials })
     }
+
+    async fetchUserFromToken() {
+        return await this.request({ endpoint: `auth/me`, method: `POST`})
+    }
+
+    async logoutUser() {
+        this.setToken(null)
+    }
+
+
+    async createNutrition(nutrition) {
+        return await this.request({endpoint: `nutrition`, method: `POST`, data: nutrition})
+    }
+
+    async fetchNutritionById(nutritionId) {
+        return await this.request({endpoint: `nutrition/${nutritionId}`, method: `GET`})
+    }
+    async listNutritionForUser() {
+        return await this.request({endpoint: `nutrition`, method: `GET`})
+    }
+
 } 
 
 
-export default new ApiClient(process.env.REACT_APP_REMOTE_HOST_URL || "http://localhost:3001")
+
+
+export default new ApiClient("http://localhost:3001")

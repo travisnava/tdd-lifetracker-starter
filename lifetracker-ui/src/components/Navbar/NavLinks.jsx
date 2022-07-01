@@ -21,7 +21,7 @@ export default function NavLinks(props) {
            <Link to = "/sleep" className = "link"><NavLink navLink = "Sleep" /></Link>
            </div>
           {/* conditional rendering to check conditions for sign up/register buttons or logout based on if user is signed in */}
-          {props.activeUser ?  <div className ="login-navlinks"><Link to = "/" className = "link2"><NavLink navLink = "Logout" /></Link></div> :
+          {props.user.email ?  <div className ="login-navlinks"><Link to = "/" className = "link2"><NavLink navLink = "Logout" onClick = {props.handleOnLogout}/></Link></div> :
             <div className ="login-navlinks">
               <Link to = "/login" className = "link2"> <NavLink navLink = "Login" /></Link>
               <Link to = "/register" className = "link2"><NavLink navLink = "Register" /></Link>

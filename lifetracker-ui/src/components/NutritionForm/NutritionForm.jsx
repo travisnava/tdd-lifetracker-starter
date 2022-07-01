@@ -1,6 +1,6 @@
 import * as React from "react"
 import "./NutritionForm.css"
-
+import apiClient from "../../services/apiClient"
 
 
 
@@ -16,7 +16,8 @@ export default function NutritionForm() {
 
   //use state variables
   const navigate = useNavigate
-  const [nutritionForm, setNutritionForm] = useState({name: "", category: "", calories: 0, quantity: 1, imageURL: ""})
+  const [nutritionForm, setNutritionForm] = useState({name: "", category: "", calories: 0, quantity: 1, image_url: ""})
+  const [error, setError] = useState(null)
 
 
 
@@ -31,22 +32,26 @@ export default function NutritionForm() {
     
 }
 
-async function  handleOnSubmitNutritionForm(){
+
             
-    try {
-      const response = await axios.post("http://localhost:3001/nutrition/", nutritionForm)
-      if (response.data) {
-        console.log("response data is:", response.data)
-      } else {
-        setError("Error creating nutrition")
-      }
-    } catch (error) {
-      console.log(error)
-    } 
+
+
+
+
+const handleOnSubmitNutritionForm = async () => {
+  setError(null)
+  const {data, error} = await apiClient.createNutrition(nutritionForm)
+  if (error) {
+    setError(error)
+  }
+  if(data){
+    console.log(data)
+    navigate("/nutrition")
+  }
+
+
   
 
-
-  navigate("/nutrition")
 }
 
 
@@ -71,7 +76,7 @@ async function  handleOnSubmitNutritionForm(){
         </div>
         <div className ="form-input-container">
             <p className ="image-label">Image URL</p>
-            <input name = "imageURL" className ="form-input" type="text" value = {nutritionForm.imageURL} onChange = {handleOnInputChange} placeholder ="http://www.food-image.com/1"/>
+            <input name = "image_url" className ="form-input" type="text" value = {nutritionForm.image_url} onChange = {handleOnInputChange} placeholder ="http://www.food-image.com/1"/>
         </div>
         <button className = "submit-nutrition" onClick={handleOnSubmitNutritionForm}>Save</button>
     </div>

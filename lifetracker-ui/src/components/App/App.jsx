@@ -34,7 +34,11 @@ const [nutritions, setNutritions] = useState([])
 
 
 
-
+const handleOnLogout = async () => {
+  await apiClient.logoutUser()
+  setUser({})
+  console.log("Logged out")
+}
 
 
 
@@ -45,13 +49,13 @@ const [nutritions, setNutritions] = useState([])
       <React.Fragment>
         <BrowserRouter>
           <main>
-            <Navbar />
+            <Navbar user = {user} setUser = {setUser} handleOnLogout = {handleOnLogout}/>
             <Routes>
               <Route path = "/" element = {<LandingPage/>} />
-              <Route path = "/login" element = {<LoginPage/>} />
-              <Route path = "/register" element = {<RegistrationPage/>} />
-              <Route path = "/activity" element = {<ActivityPage/>} />
-              <Route path = "/nutrition" element = {<NutritionPage isLoading = {isLoading} nutritions = {nutritions}/>} />
+              <Route path = "/login" element = {<LoginPage user = {user} setUser = {setUser}/>} />
+              <Route path = "/register" element = {<RegistrationPage user = {user} setUser = {setUser}/>} />
+              <Route path = "/activity" element = {<ActivityPage user = {user}/>} />
+              <Route path = "/nutrition" element = {<NutritionPage  user = {user} isLoading = {isLoading} nutritions = {nutritions}/>} />
               <Route path = "/nutrition/create" element = {<NutritionNew/>} />
               <Route path = "/nutrition/id/:nutritionId" element = {<NutritionDetail/>} />
 

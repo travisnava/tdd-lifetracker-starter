@@ -21,7 +21,7 @@ export default function Navbar(props) {
             </Link>
         </div>
         <div className="nav-links">
-            <NavLinks/>
+            <NavLinks user = {props.user} setUser = {props.setUser} handleOnLogout = {props.handleOnLogout}/>
         </div>
       </div>
     </nav>
