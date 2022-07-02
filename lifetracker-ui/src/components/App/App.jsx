@@ -39,22 +39,7 @@ const [nutritions, setNutritions] = useState([])
 
 
 
-useEffect(() => {
-  const fetchNutritions = async () => {
-    setIsLoading(true)
-    const {data, error} = await apiClient.listNutritionForUser()
-    if(data){
-      console.log("nutritions", nutritions)
-      setNutritions(data)
-    }
-    if(error){
-      setError(error)
-    }
-    setIsLoading(false)
-  }
 
-  fetchNutritions()
-}, [])
 
 
 useEffect(() => {

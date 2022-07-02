@@ -15,6 +15,29 @@ import AccessForbidden from "../AccessForbidden/AccessForbidden"
 export default function NutritionPage(props) {
 
 
+
+
+
+
+  useEffect(() => {
+    const fetchNutritions = async () => {
+      props.setIsLoading(true)
+      const {data, error} = await apiClient.listNutritionForUser()
+      if(data){
+        console.log("nutritions", props.nutritions)
+        props.setNutritions(data)
+      }
+      if(error){
+        setError(error)
+      }
+      props.setIsLoading(false)
+    }
+  
+    fetchNutritions()
+  }, [])
+
+
+
   
   const checkAccess = () => {
     if(!props.user?.email){

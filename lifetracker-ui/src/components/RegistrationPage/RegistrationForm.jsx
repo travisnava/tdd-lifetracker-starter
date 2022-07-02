@@ -7,7 +7,7 @@ import apiClient from "../../services/apiClient"
 import { useState } from "react"
 import { Link, useNavigate } from 'react-router-dom';
 
-export default function RegistrationForm() {
+export default function RegistrationForm(props) {
 
 
    //global var
@@ -17,8 +17,6 @@ export default function RegistrationForm() {
   const navigate = useNavigate()
   const [registerForm, setRegisterForm] = useState(emptyForm)
   const [error, setError] = useState(null)
-
-
 
 
 
@@ -38,39 +36,29 @@ export default function RegistrationForm() {
     }
 
 
-    async function  handleOnSubmitRegisterForm(){
+
             
 
-
-      const {data, error} = await apiClient.signupUser(registerForm)
-      if (error) {
-        setError(error)
-      }
-      if(data?.user)
-      apiClient.setToken(data.token)
-
-      // try {
-      //   const response = await axios.post("http://localhost:3001/auth/register", registerForm)
-      //   if (response.data) {
-      //     console.log("response data is:", response.data)
-      //     navigate("/activity")
-      //   } else {
-      //     setError("Error registering your account")
-      //   }
-      // } catch (err) {
-      //   setError(err.response.data.error.message)
-      //   console.log(error)
-      // } 
-    
-
-
-    setRegisterForm(emptyForm)
-
-  }
+  
     
     
       
+  const handleOnSubmitRegisterForm = async () => {
+    const {data, error} = await apiClient.signupUser(registerForm)
+    if (error) {
+      setError(error)
+    }
+    if(data?.user)
+      console.log("data.user", data.user)
+      apiClient.setToken(data.token)
+      navigate("/activity")
+      props.setUser(data?.user)
+      console.log("user", props.user)
 
+
+    setRegisterForm(emptyForm)
+  
+  }
 
 
 
