@@ -19,23 +19,6 @@ export default function NutritionPage(props) {
 
 
 
-  useEffect(() => {
-    const fetchNutritions = async () => {
-      props.setIsLoading(true)
-      const {data, error} = await apiClient.listNutritionForUser()
-      if(data){
-        console.log("nutritions", props.nutritions)
-        props.setNutritions(data)
-      }
-      if(error){
-        setError(error)
-      }
-      props.setIsLoading(false)
-    }
-  
-    fetchNutritions()
-  }, [])
-
 
 
   
@@ -62,7 +45,7 @@ export default function NutritionPage(props) {
         </div>
         <div className = "nutrition-feed">
         </div>
-        <NutritionOverview isLoading = {props.isLoading} nutritions = {props.nutritions}/>
+        <NutritionOverview isLoading = {props.isLoading} nutritions = {props.nutritions} setNutritions = {props.setNutritions}/>
         </div>}
     </div>
   )

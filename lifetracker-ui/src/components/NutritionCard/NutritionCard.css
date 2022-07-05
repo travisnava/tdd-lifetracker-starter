@@ -1,0 +1,15 @@
+.nutrition-card, .nutrition-info-container {
+    width: 500px;
+    
+}
+
+.nutrition-info-container {
+    display: flex;
+}
+
+
+.card-calories-container, .card-quantity-container {
+    display: flex;
+    align-items: center;
+    margin-right: 5%;
+}
