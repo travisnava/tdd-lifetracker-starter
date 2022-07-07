@@ -158,7 +158,7 @@ The components in the `App.jsx` file should render the following components (alo
 
   - [X] **`App.jsx`**
     - [X] Should be wrapped by an element with the `className` of `app`
-    - [X] The core App component that contains the routes for the app wrapped in Context providers
+    - [ ] The core App component that contains the routes for the app wrapped in Context providers
     - [X] Renders the `Navbar` component on every route
     - [X] Renders a `BrowserRouter` component that contains a `Routes` component with the following routes:
       - [X] `/` - Should render the `Landing.jsx` component
@@ -169,23 +169,23 @@ The components in the `App.jsx` file should render the following components (alo
       - [X] `*` - anything else should render the `NotFound` component
   - [X] To standarize API requests throughout the application, set up an **`ApiClient`** class
 
-    - [ ] Start by creating a `constants.js` file at the root of the project
-      - [ ] In it, export a few variables:
+    - [X] Start by creating a `constants.js` file at the root of the project
+      - [X] In it, export a few variables:
       - [ ] `PRODUCTION_API_BASE_URL` - set to whatever url the production API is deployed at
-      - [ ] `DEVELOPMENT_API_BASE_URL` - set to "http://localhost:3001" for development
-      - [ ] `API_BASE_URL` - if `process.env.NODE_ENV` is `production`, set this to `PRODUCTION_API_BASE_URL`, otherwise set it to `DEVELOPMENT_API_BASE_URL`
-    - [ ] Next, create a `services` directory at the root of the project
-    - [ ] Inside that directory, touch an `apiClient.js` file
-    - [ ] In that file, import the `axios` package and the `API_BASE_URL` constant from the `constants.js` file
-    - [ ] Define a new class in that file called `ApiClient`.
-      - [ ] Give it a constructor function that accepts a single parameter - `remoteHostUrl`. The constructor should attach the `remoteHostUrl` parameter to a new instance with `this.remoteHostUrl = remoteHostUrl`. It should also set `this.token = null`.
-      - [ ] Export default a new instance of the `ApiClient` class
-      - [ ] Add an additional method called `setToken` that accepts a single parameter - `token` and attaches it to the instance.
-      - [ ] Create a utility method called `request` that uses `axios` to issue HTTP requests
-      - [ ] Add a `login` method that uses the `request` method to send an HTTP request to the `auth/login` endpoint
-      - [ ] Add a `signup` method that uses the `request` method to send an HTTP request to the `auth/register` endpoint
-      - [ ] Add a `fetchUserFromToken` method that uses the `request` method to send an HTTP request to the `auth/me` endpoint
-      - [ ] **Add as many other methods as needed when making API requests**
+      - [X] `DEVELOPMENT_API_BASE_URL` - set to "http://localhost:3001" for development
+      - [X] `API_BASE_URL` - if `process.env.NODE_ENV` is `production`, set this to `PRODUCTION_API_BASE_URL`, otherwise set it to `DEVELOPMENT_API_BASE_URL`
+    - [X] Next, create a `services` directory at the root of the project
+    - [X] Inside that directory, touch an `apiClient.js` file
+    - [X] In that file, import the `axios` package and the `API_BASE_URL` constant from the `constants.js` file
+    - [X] Define a new class in that file called `ApiClient`.
+      - [X] Give it a constructor function that accepts a single parameter - `remoteHostUrl`. The constructor should attach the `remoteHostUrl` parameter to a new instance with `this.remoteHostUrl = remoteHostUrl`. It should also set `this.token = null`.
+      - [X] Export default a new instance of the `ApiClient` class
+      - [X] Add an additional method called `setToken` that accepts a single parameter - `token` and attaches it to the instance.
+      - [X] Create a utility method called `request` that uses `axios` to issue HTTP requests
+      - [X] Add a `login` method that uses the `request` method to send an HTTP request to the `auth/login` endpoint
+      - [X] Add a `signup` method that uses the `request` method to send an HTTP request to the `auth/register` endpoint
+      - [X] Add a `fetchUserFromToken` method that uses the `request` method to send an HTTP request to the `auth/me` endpoint
+      - [X] **Add as many other methods as needed when making API requests**
 
   - [ ] Create an **`auth`** context:
 
@@ -265,51 +265,51 @@ The components in the `App.jsx` file should render the following components (alo
 
   - [X] The **`LoginPage.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `login-page`
-    - [ ] Using either a custom hook, context, or manually set state, this component should check to see if a user is already logged in
-      - [ ] If the user is already logged in, it should redirect them to the `/activity` page
-      - [ ] If no user is authenticated, it should render the `LoginForm.jsx` component and pass it any props it needs
+    - [X] Should render JSX that is wrapped by an element with the `className` of `login-page`
+    - [X] Using either a custom hook, context, or manually set state, this component should check to see if a user is already logged in
+      - [X] If the user is already logged in, it should redirect them to the `/activity` page
+      - [X] If no user is authenticated, it should render the `LoginForm.jsx` component and pass it any props it needs
 
-  - [ ] The **`RegistrationForm.jsx`** component:
+  - [X] The **`RegistrationForm.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `registration-form`
-    - [ ] Should render an input element for the following fields:
-      - [ ] `email`
-      - [ ] `username`
-      - [ ] `firstName`
-      - [ ] `lastName`
-      - [ ] `password`
-      - [ ] `passwordConfirm`
-    - [ ] Each `input` element in the form should have a `className` of `form-input` and should have the following props set:
-      - [ ] `name` - the `name` of the `input` field being rendered (`email`, `username`, `firstName`, `lastName`, `password`, `passwordConfirm`)
-      - [ ] `type` - the type of the `input` element (`text`, `email`, `number`, etc)
-      - [ ] `value` - the current value of the `input` element
-      - [ ] `onChange` - the `onChange` handler function
-    - [ ] The component should validate the `email` field:
-      - [ ] If the user has entered text into the `email` field and it doesn't contain an `@` symbol, then an error message should be displayed in an element with the `className` of `error` indicating that the entry is not a valid email.
-    - [ ] The component should validate the `password` and `passwordConfirm` fields:
-      - [ ] If the user has entered text into the `password` and `passwordConfirm` fields and they don't match, then a message should be displayed in an element with the `className` of `error` with a message that contains the text: `passwords don't match`
-    - [ ] The component should gracefully handle errors:
-      - [ ] If the user has attempted to login and gotten a `401` error, then the `errors` object should contain a `form` property that contains a message indicating that the `email` and `password` combination is incorrect.
-      - [ ] If the user has attempted to login and gotten a `400` or `422` error, then the `errors` object should contain a `form` property that contains a message indicating what went wrong.
-    - [ ] There should be a `button` element with the `className` of `submit-registration`:
-      - [ ] It should contain the text `"Create Account"`
-      - [ ] When clicked, it should call the `signupUser` function
+    - [X] Should render JSX that is wrapped by an element with the `className` of `registration-form`
+    - [X] Should render an input element for the following fields:
+      - [X] `email`
+      - [X] `username`
+      - [X] `firstName`
+      - [X] `lastName`
+      - [X] `password`
+      - [X] `passwordConfirm`
+    - [X] Each `input` element in the form should have a `className` of `form-input` and should have the following props set:
+      - [X] `name` - the `name` of the `input` field being rendered (`email`, `username`, `firstName`, `lastName`, `password`, `passwordConfirm`)
+      - [X] `type` - the type of the `input` element (`text`, `email`, `number`, etc)
+      - [X] `value` - the current value of the `input` element
+      - [X] `onChange` - the `onChange` handler function
+    - [X] The component should validate the `email` field:
+      - [X] If the user has entered text into the `email` field and it doesn't contain an `@` symbol, then an error message should be displayed in an element with the `className` of `error` indicating that the entry is not a valid email.
+    - [X] The component should validate the `password` and `passwordConfirm` fields:
+      - [X] If the user has entered text into the `password` and `passwordConfirm` fields and they don't match, then a message should be displayed in an element with the `className` of `error` with a message that contains the text: `passwords don't match`
+    - [X] The component should gracefully handle errors:
+      - [X] If the user has attempted to login and gotten a `401` error, then the `errors` object should contain a `form` property that contains a message indicating that the `email` and `password` combination is incorrect.
+      - [X] If the user has attempted to login and gotten a `400` or `422` error, then the `errors` object should contain a `form` property that contains a message indicating what went wrong.
+    - [X] There should be a `button` element with the `className` of `submit-registration`:
+      - [X] It should contain the text `"Create Account"`
+      - [X] When clicked, it should call the `signupUser` function
 
-  - [ ] The **`RegistrationPage.jsx`** component:
+  - [X] The **`RegistrationPage.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `registration-page`
-    - [ ] Using either a custom hook, context, or manually handled state, this component should check to see if a user is already logged in
-      - [ ] If the user is already logged in, it should redirect them to the `/activity` page
-      - [ ] If no user is authenticated, it should render the `RegistrationForm.jsx` component and pass it any props it needs
+    - [X] Should render JSX that is wrapped by an element with the `className` of `registration-page`
+    - [X] Using either a custom hook, context, or manually handled state, this component should check to see if a user is already logged in
+      - [X] If the user is already logged in, it should redirect them to the `/activity` page
+      - [X] If no user is authenticated, it should render the `RegistrationForm.jsx` component and pass it any props it needs
 
-  - [ ] The **`LandingPage.jsx`** component:
+  - [X] The **`LandingPage.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `landing-page`
-    - [ ] Should render an element with the `className` of `hero`
-      - [ ] Inside it, display a large hero image using an `img` element with the `className` of `hero-img`
-      - [ ] Render a brief blurb on what this application is about inside an element with the `className` of `cta`
-    - [ ] Should allow unauthenticated access
+    - [X] Should render JSX that is wrapped by an element with the `className` of `landing-page`
+    - [X] Should render an element with the `className` of `hero`
+      - [X] Inside it, display a large hero image using an `img` element with the `className` of `hero-img`
+      - [X] Render a brief blurb on what this application is about inside an element with the `className` of `cta`
+    - [X] Should allow unauthenticated access
 
   - [ ] The **`activity`** context
 
@@ -332,43 +332,43 @@ The components in the `App.jsx` file should render the following components (alo
     - [ ] Create and export a `useActivityContext` hook that calls the `React.useContext` hook with the newly created `ActivityContext` and returns it.
     - [ ] In the `App.jsx` file, nest the `ActivityContextProvider` inside the `AuthContextProvider`.
 
-  - [ ] The **`ActivityPage.jsx`** component:
+  - [X] The **`ActivityPage.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `activity-page`
-    - [ ] It should call the `useActivityContext` hook and extract all the necessary data from it.
-    - [ ] If the `isProcessing` flag is `true`, it should render the `Loading.jsx` component
-    - [ ] If the `isProcessing` flag is `false`, it should render the `ActivityFeed.jsx` component and pass it the appropriate props
+    - [X] Should render JSX that is wrapped by an element with the `className` of `activity-page`
+    - [X] It should call the `useActivityContext` hook and extract all the necessary data from it.
+    - [X] If the `isProcessing` flag is `true`, it should render the `Loading.jsx` component
+    - [X] If the `isProcessing` flag is `false`, it should render the `ActivityFeed.jsx` component and pass it the appropriate props
 
-  - [ ] The **`ActivityFeed.jsx`** component:
+  - [X] The **`ActivityFeed.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `activity-feed`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `activity-feed`
     - [ ] Should accept **at least** the following props:
       - [ ] `totalCaloriesPerDay` - an array of items containing summary data about the total calories consumed per day
       - [ ] `avgCaloriesPerCategory` - an array of items containing summary data about the average calories consumed per category
       - [ ] Any other
-    - [ ] Inside an element with the `className` of `per-category`, it should:
-      - [ ] Render the text: `"Average Calories Per Category` inside an `h4` element
+    - [X] Inside an element with the `className` of `per-category`, it should:
+      - [X] Render the text: `"Average Calories Per Category` inside an `h4` element
       - [ ] Take the first `6` or less items in the `avgCaloriesPerCategory` array and render a `SummaryStat.jsx` component for each item.
         - [ ] It should pass the calories **rounded down to one decimal place** as the `stat` prop
         - [ ] It should pass the string of `calories` as the `label` prop
         - [ ] It should pass the `category` as the `substat` prop
-    - [ ] Inside an element with the `className` of `per-day`, it should:
-      - [ ] Render the text: `"Total Calories Per Day` inside an `h4` element
+    - [X] Inside an element with the `className` of `per-day`, it should:
+      - [X] Render the text: `"Total Calories Per Day` inside an `h4` element
       - [ ] For each item in the `totalCaloriesPerDay` array, it should render a `SummaryStat.jsx` component.
         - [ ] It should pass the calories **rounded down to the nearest whole number** as the `stat` prop
         - [ ] It should pass the string of `calories` as the `label` prop
         - [ ] It should pass the `date` in the format `dd/mm/yyyy` - example: `07/02/2022` - as the `substat` prop
 
-  - [ ] The **`SummaryStat.jsx`** component:
+  - [X] The **`SummaryStat.jsx`** component:
 
     - [ ] Should render JSX that is wrapped by an element with the `className` of `summary-stat`
     - [ ] Should accept **at least** the following props:
       - [ ] `stat` - the primary statistic to display
       - [ ] `label` - the unit label assigned to the statistic
       - [ ] `substat` - a secondary statistic related to the primary statistic
-    - [ ] It should render the `stat` prop inside an element with the `className` of `primary-statistic`
-    - [ ] It should render the `label` prop inside an element with the `className` of `stat-label`
-    - [ ] It should render the `substat` prop inside an element with the `className` of `secondary-statistic`
+    - [X] It should render the `stat` prop inside an element with the `className` of `primary-statistic`
+    - [X] It should render the `label` prop inside an element with the `className` of `stat-label`
+    - [X] It should render the `substat` prop inside an element with the `className` of `secondary-statistic`
 
   - [ ] The **`nutrition`** context
 
@@ -391,7 +391,7 @@ The components in the `App.jsx` file should render the following components (alo
 
   - [ ] The **`NutritionPage.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-page`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-page`
     - [ ] Should render a nested `Routes` component from `react-router-dom`.
       - [ ] There should be multiple `Route` components:
         - [ ] The `/nutrition` route should render the `NutritionOverview.jsx` component
@@ -401,76 +401,76 @@ The components in the `App.jsx` file should render the following components (alo
 
   - [ ] The **`NutritionOverview.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-overview`
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-overview`
     - [ ] It should call the `useNutritionContext` hook and extract all the necessary data from it.
       - [ ] If the `error` state variable has a valid string in it, it should render the `error` message inside an element with the `className` of `error`
-      - [ ] If the `isLoading` boolean is `true`, it should render the `Loading.jsx` component
-      - [ ] If the `isLoading` boolean is `false`, it should render the `NutritionFeed.jsx` component and pass it the appropriate props
-    - [ ] Near the top of the component, it should render a `Link` component that directs to the `/nutrition/create` route and contains the text: `"Record Nutrition"`
+      - [X] If the `isLoading` boolean is `true`, it should render the `Loading.jsx` component
+      - [X] If the `isLoading` boolean is `false`, it should render the `NutritionFeed.jsx` component and pass it the appropriate props
+    - [X] Near the top of the component, it should render a `Link` component that directs to the `/nutrition/create` route and contains the text: `"Record Nutrition"`
 
-  - [ ] The **`NutritionFeed.jsx`** component:
+  - [X] The **`NutritionFeed.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-feed`
-    - [ ] It should receive **at least** the following props:
-      - [ ] `nutritions` - an array of `nutrition` items
-    - [ ] If the `nutritions` array has no items in it, it should render an empty message that says `Nothing here yet` inside an element with the `className` of `empty-message`
-    - [ ] If the `nutritions` array does have items in it:
-      - [ ] For each item in the `nutritions` array, it should render a `NutritionCard.jsx` component
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-feed`
+    - [X] It should receive **at least** the following props:
+      - [X] `nutritions` - an array of `nutrition` items
+    - [X] If the `nutritions` array has no items in it, it should render an empty message that says `Nothing here yet` inside an element with the `className` of `empty-message`
+    - [X] If the `nutritions` array does have items in it:
+      - [X] For each item in the `nutritions` array, it should render a `NutritionCard.jsx` component
 
-  - [ ] The **`NutritionNew.jsx`** component:
+  - [X] The **`NutritionNew.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-new`
-    - [ ] Should render the `NutritionForm.jsx` component and pass it the appropriate props
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-new`
+    - [X] Should render the `NutritionForm.jsx` component and pass it the appropriate props
 
-  - [ ] The **`NutritionForm.jsx`** component:
+  - [X] The **`NutritionForm.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-form`
-    - [ ] Should render an input element for the following fields:
-      - [ ] `name` - name of the nutrition item (defaults to an empty string)
-      - [ ] `calories` - number of calories in the nutrition item (defaults to 1)
-      - [ ] `imageUrl` - the `url` of an image to show for this nutrition item (defaults to an empty string)
-      - [ ] `category` - the category that this nutrition item belongs to, like fruit, meat, soda, snack, nuts, etc. (defaults to an empty string)
-    - [ ] Each `input` element in the form should have a `className` of `form-input` and should have the following props set:
-      - [ ] `name` - the `name` of the `input` field being rendered (`name`, `calories`, `imageUrl`, `category`)
-      - [ ] `type` - the type of the `input` element (`text`, `email`, `number`, etc)
-      - [ ] `value` - the current value of the `input` element
-      - [ ] `onChange` - the `onChange` handler function
-    - [ ] The component should gracefully handle errors:
-      - [ ] If any of the required fields are left blank, there should be an error message inside of an element with the `className` of `error` indicating which fields are required.
-      - [ ] If the user has attempted to create a nutrition entry and gotten a `400` or `422` error, then that message should be displayed inside an element with the `className` of `error`
-    - [ ] There should be a `button` element with the `className` of `submit-nutrition`:
-      - [ ] It should contain the text `"Save"`
-      - [ ] When clicked, it should call a function that creates a new nutrition entry
-    - [ ] After the form has been succesfully submitted:
-      - [ ] Ensure that the new nutrition entry is stored in the `nutrition` context's `nutritions` array and is displayed in the `NutritionFeed.jsx` component
-      - [ ] Refetch the `activity` data so that new summary stats will be calculated
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-form`
+    - [X] Should render an input element for the following fields:
+      - [X] `name` - name of the nutrition item (defaults to an empty string)
+      - [X] `calories` - number of calories in the nutrition item (defaults to 1)
+      - [X] `imageUrl` - the `url` of an image to show for this nutrition item (defaults to an empty string)
+      - [X] `category` - the category that this nutrition item belongs to, like fruit, meat, soda, snack, nuts, etc. (defaults to an empty string)
+    - [X] Each `input` element in the form should have a `className` of `form-input` and should have the following props set:
+      - [X] `name` - the `name` of the `input` field being rendered (`name`, `calories`, `imageUrl`, `category`)
+      - [X] `type` - the type of the `input` element (`text`, `email`, `number`, etc)
+      - [X] `value` - the current value of the `input` element
+      - [X] `onChange` - the `onChange` handler function
+    - [X] The component should gracefully handle errors:
+      - [X] If any of the required fields are left blank, there should be an error message inside of an element with the `className` of `error` indicating which fields are required.
+      - [X] If the user has attempted to create a nutrition entry and gotten a `400` or `422` error, then that message should be displayed inside an element with the `className` of `error`
+    - [X] There should be a `button` element with the `className` of `submit-nutrition`:
+      - [X] It should contain the text `"Save"`
+      - [X] When clicked, it should call a function that creates a new nutrition entry
+    - [X] After the form has been succesfully submitted:
+      - [X] Ensure that the new nutrition entry is stored in the `nutrition` context's `nutritions` array and is displayed in the `NutritionFeed.jsx` component
+      - [X] Refetch the `activity` data so that new summary stats will be calculated
 
-  - [ ] The **`NutritionDetail.jsx`** component:
+  - [X] The **`NutritionDetail.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-detail`
-    - [ ] It should leverage the `useParams` hook from `react-router-dom` to extract the `nutritionId` param from the url
-    - [ ] When the component is mounted to the screen...
-      - [ ] It should make a `GET` request to the `/nutrition/:nutritionId` endpoint with the `axios.get` method.
-      - [ ] The `:nutritionId` part of the request should be replaced with the `nutritionId` pulled from the url.
-      - [ ] When the initial request is loading, it should render an `h1` element with the `className` of `loading` and contain the text `"Loading..."`
-      - [ ] It should store the `nutrition` received by the request in state and then render a `NutritionCard.jsx` component for that nutrition.
-      - [ ] If no `nutrition` is found with that `id`, it should render the `NotFound.jsx` component
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-detail`
+    - [X] It should leverage the `useParams` hook from `react-router-dom` to extract the `nutritionId` param from the url
+    - [X] When the component is mounted to the screen...
+      - [X] It should make a `GET` request to the `/nutrition/:nutritionId` endpoint with the `axios.get` method.
+      - [X] The `:nutritionId` part of the request should be replaced with the `nutritionId` pulled from the url.
+      - [X] When the initial request is loading, it should render an `h1` element with the `className` of `loading` and contain the text `"Loading..."`
+      - [X] It should store the `nutrition` received by the request in state and then render a `NutritionCard.jsx` component for that nutrition.
+      - [X] If no `nutrition` is found with that `id`, it should render the `NotFound.jsx` component
 
-  - [ ] The **`NutritionCard.jsx`** component:
+  - [X] The **`NutritionCard.jsx`** component:
 
-    - [ ] Should render JSX that is wrapped by an element with the `className` of `nutrition-card`
-    - [ ] Should accept **at least** the following props:
-      - [ ] `nutrition` - should be a nutrition entry object containing the following attributes:
-        - [ ] `imageUrl` - (not required)
-        - [ ] `name` - (required)
-        - [ ] `calories` - (required)
-        - [ ] `category` - (required)
-        - [ ] `createdAt` - (required)
-    - [ ] It should render the `name` of the `nutrition` entry inside an element with the `className` of `nutrition-name`
-    - [ ] If the `nutrition` entry has a valid `imageUrl` attribute, it should render an `img` element with the `className` of `nutrition-image` and use that `imageUrl` as its `src`
-    - [ ] It should render the `calories` attribute of the `nutrition` entry inside an element with the `className` of `nutrition-calories`
-    - [ ] It should render the `category` attribute of the `nutrition` entry inside an element with the `className` of `nutrition-category`
-    - [ ] It should render the `createdAt` attribute of the `nutrition` entry in the format `dd/mm/yyyy` - example: `07/02/2022` - inside an element with the `className` of `nutrition-date`.
+    - [X] Should render JSX that is wrapped by an element with the `className` of `nutrition-card`
+    - [X] Should accept **at least** the following props:
+      - [X] `nutrition` - should be a nutrition entry object containing the following attributes:
+        - [X] `imageUrl` - (not required)
+        - [X] `name` - (required)
+        - [X] `calories` - (required)
+        - [X] `category` - (required)
+        - [X] `createdAt` - (required)
+    - [X] It should render the `name` of the `nutrition` entry inside an element with the `className` of `nutrition-name`
+    - [X] If the `nutrition` entry has a valid `imageUrl` attribute, it should render an `img` element with the `className` of `nutrition-image` and use that `imageUrl` as its `src`
+    - [X] It should render the `calories` attribute of the `nutrition` entry inside an element with the `className` of `nutrition-calories`
+    - [X] It should render the `category` attribute of the `nutrition` entry inside an element with the `className` of `nutrition-category`
+    - [X] It should render the `createdAt` attribute of the `nutrition` entry in the format `dd/mm/yyyy` - example: `07/02/2022` - inside an element with the `className` of `nutrition-date`.
 
   - [ ] DO THE SAME FOR ANY OTHER RESOURCE THAT IS IN THE APPLICATION
 
@@ -491,15 +491,15 @@ Note that when developing the backend, SITE interns will be asked to write tests
 Here are the pieces of functionality that should be built out for the backend:
 
 - **Project setup**
-  - [ ] First things first, bootstrap the Express application with some essential files and starter code
-  - [ ] Create a `.gitignore` file, an `app.js` file, an `app.test.js` file, and a `server.js` file
-  - [ ] Make sure `node_modules` are added to the `.gitignore` file.
-  - [ ] Add dependencies for `express@next`, `morgan`, `cors`, and `nodemon`
-  - [ ] Install new dependencies for `bcrypt`, `jsonwebtoken`, `colors`, `dotenv`, `pg`
-  - [ ] Commit all work to `git`
-  - [ ] Add a `.env` file to the root of the repo and include the following environment variables
-    - [ ] `PORT` (default to `3001`)
-    - [ ] `SECRET_KEY` (set to a long random string)
+  - [X] First things first, bootstrap the Express application with some essential files and starter code
+  - [X] Create a `.gitignore` file, an `app.js` file, an `app.test.js` file, and a `server.js` file
+  - [X] Make sure `node_modules` are added to the `.gitignore` file.
+  - [X] Add dependencies for `express@next`, `morgan`, `cors`, and `nodemon`
+  - [X] Install new dependencies for `bcrypt`, `jsonwebtoken`, `colors`, `dotenv`, `pg`
+  - [X] Commit all work to `git`
+  - [X] Add a `.env` file to the root of the repo and include the following environment variables
+    - [X] `PORT` (default to `3001`)
+    - [X] `SECRET_KEY` (set to a long random string)
     - [ ] `BCRYPT_WORK_FACTOR` (set to `13`)
     - [ ] `DATABASE_USER`
     - [ ] `DATABASE_PASS`
