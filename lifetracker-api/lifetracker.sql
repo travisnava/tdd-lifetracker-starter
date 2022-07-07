@@ -10,6 +10,7 @@ CREATE DATABASE lifetracker;
 \i lifetracker-schema.sql
 
 
+
 -- script to create test database
 \echo 'Delete and recreate lifetracker_test db?'
 \prompt 'Return yes or control-C to cancel >' answer

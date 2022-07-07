@@ -16,11 +16,6 @@ export default function NutritionPage(props) {
 
 
 
-
-
-
-
-
   
   const checkAccess = () => {
     if(!props.user?.email){

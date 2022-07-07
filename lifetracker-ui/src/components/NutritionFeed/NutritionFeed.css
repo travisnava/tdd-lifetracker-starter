@@ -5,3 +5,9 @@
 }
 
 
+.nutrition-feed {
+
+    display: inline-block;
+    justify-content: center;
+    margin-left: 10%;
+}
