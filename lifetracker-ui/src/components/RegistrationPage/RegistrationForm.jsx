@@ -28,10 +28,8 @@ export default function RegistrationForm(props) {
 
     function handleOnInputChange (evt) {
 
-        // add error handling error or in submit handler
 
-
-        setRegisterForm((form) => ({ ...form, [evt.target.name]: evt.target.value }))
+      setRegisterForm((form) => ({ ...form, [evt.target.name]: evt.target.value }))
 
     }
 
@@ -44,20 +42,27 @@ export default function RegistrationForm(props) {
     
       
   const handleOnSubmitRegisterForm = async () => {
-    const {data, error} = await apiClient.signupUser(registerForm)
-    if (error) {
-      setError(error)
+    if (registerForm.password != registerForm.passwordConfirm){
+      setError("Passwords don't match")
     }
-    if(data?.user)
-      console.log("data.user", data.user)
-      apiClient.setToken(data.token)
-      navigate("/activity")
-      props.setUser(data?.user)
-      console.log("user", props.user)
-
-
-    setRegisterForm(emptyForm)
+    else {
+      console.log("PASSWORDS", registerForm.password, registerForm.passwordConfirm)
+      const {data, error} = await apiClient.signupUser(registerForm)
+      if (error) {
+        setError(error)
+      }
+      if(data?.user)
+        console.log("data.user", data.user)
+        apiClient.setToken(data.token)
+        navigate("/activity")
+        props.setUser(data?.user)
+        console.log("user", props.user)
   
+  
+      setRegisterForm(emptyForm)
+    
+    }
+
   }
 
 

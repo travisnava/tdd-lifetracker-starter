@@ -16,7 +16,7 @@ export default function NutritionForm(props) {
 
   //use state variables
   const navigate = useNavigate()
-  const [nutritionForm, setNutritionForm] = useState({name: "", category: "", calories: 0, quantity: 1, image_url: ""})
+  const [nutritionForm, setNutritionForm] = useState({})
   const [error, setError] = useState(null)
   const [success, setSuccess] = useState(false)
 
@@ -25,12 +25,8 @@ export default function NutritionForm(props) {
 
 
   function handleOnInputChange (evt) {
-
-    // add error handling error or in submit handler
-
-
+    console.log(nutritionForm)
     setNutritionForm((form) => ({ ...form, [evt.target.name]: evt.target.value }))
-    
 }
 
 
@@ -40,7 +36,6 @@ export default function NutritionForm(props) {
 
 
 const handleOnSubmitNutritionForm = async () => {
-  setError(null)
   const {data, error} = await apiClient.createNutrition(nutritionForm)
   if (error) {
     setError(error)
@@ -51,21 +46,8 @@ const handleOnSubmitNutritionForm = async () => {
     navigate("/nutrition")
   }
 
-  // const {nutritionList, listError} = await apiClient.listNutritionForUser()
-  //   if(nutritionList){
-  //     console.log("nutritionList", nutritionList)
-  //     props.setNutritions(nutritionList)
-  //     
-
-  //   }
-  //   if(listError){
-  //     setError(listError)
-  //   }
 
   
-
-
-
 
   
 
@@ -95,6 +77,7 @@ const handleOnSubmitNutritionForm = async () => {
             <p className ="image-label">Image URL</p>
             <input name = "image_url" className ="form-input" type="text" value = {nutritionForm.image_url} onChange = {handleOnInputChange} placeholder ="http://www.food-image.com/1"/>
         </div>
+        {error? <p className ="submit-error">{error}</p>: null}
         <button className = "submit-nutrition" onClick={handleOnSubmitNutritionForm}>Save</button>
     </div>
   )

@@ -3,3 +3,8 @@
     margin-left: 45%;
     justify-content: center;
 }
+
+
+.submit-error{
+    color: red;
+}

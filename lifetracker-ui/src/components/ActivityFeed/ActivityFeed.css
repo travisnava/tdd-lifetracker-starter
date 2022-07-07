@@ -1,5 +1,15 @@
 .activity-feed{
     margin-top:5%;
+    justify-content: center;
+}
+
+.feed-title-container, .feed-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+.per-category, .per-day {
     display: flex;
     justify-content: center;
 }

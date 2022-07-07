@@ -18,7 +18,7 @@ export default function NutritionOverview(props) {
       </div>
 
 
-
+        
         {props.isLoading ? <Loading/> : <NutritionFeed nutritions = {props.nutritions} setNutritions = {props.setNutritions}/>}
     </div>
   )

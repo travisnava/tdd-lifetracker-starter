@@ -42,6 +42,7 @@ const [nutritions, setNutritions] = useState([])
 
 
 
+
 useEffect(() => {
   const fetchUser = async () => {
     const {data, error} = await apiClient.fetchUserFromToken()
@@ -79,10 +80,10 @@ const handleOnLogout = async () => {
               <Route path = "/" element = {<LandingPage/>} />
               <Route path = "/login" element = {<LoginPage user = {user} setUser = {setUser}/>} />
               <Route path = "/register" element = {<RegistrationPage user = {user} setUser = {setUser}/>} />
-              <Route path = "/activity" element = {<ActivityPage user = {user}/>} />
+              <Route path = "/activity" element = {<ActivityPage user = {user} isLoading = {isLoading}/>} />
               <Route path = "/nutrition" element = {<NutritionPage  user = {user} isLoading = {isLoading} nutritions = {nutritions} setNutritions = {setNutritions}/>} />
               <Route path = "/nutrition/create" element = {<NutritionNew nutritions = {nutritions} setNutritions = {setNutritions}/>} />
-              <Route path = "/nutrition/id/:nutritionId" element = {<NutritionDetail/>} />
+              <Route path = "/nutrition/id/:nutritionId" element = {<NutritionDetail nutritions = {nutritions} isLoading = {isLoading} setIsLoading = {setIsLoading}/>} />
 
 
               <Route path = "*" element = {<NotFound />}/> 
