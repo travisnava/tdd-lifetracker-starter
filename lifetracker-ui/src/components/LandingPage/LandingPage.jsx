@@ -15,11 +15,13 @@ export default function LandingPage() {
           <h1 className = "cta-title">Life Tracker</h1>
           <h2 className = "cta-subheading"><em>Helping you take back control of your world</em></h2>
         </div>
-        <div className = "feature-icons">
-          <span><i class="fa-solid fa-dumbbell fa-2xl"></i></span>
-          <span><i class="fa-solid fa-carrot fa-2xl"></i></span>
-          <span><i class="fa-solid fa-bed fa-2xl"></i></span>
-          <span><i class="fa-solid fa-calendar fa-2xl"></i></span>
+        <div className = "feature-icons-container">
+          <div className = "feature-icons">
+            <span><i class="fa-solid fa-dumbbell fa-2xl"></i></span>
+            <span><i class="fa-solid fa-carrot fa-2xl"></i></span>
+            <span><i class="fa-solid fa-bed fa-2xl"></i></span>
+            <span><i class="fa-solid fa-calendar fa-2xl"></i></span>
+          </div>
         </div>
       </div>
     </div>
