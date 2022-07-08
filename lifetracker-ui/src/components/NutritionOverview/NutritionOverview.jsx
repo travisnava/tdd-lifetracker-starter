@@ -14,7 +14,7 @@ export default function NutritionOverview(props) {
     <div className="nutrition-overview">
       <div className="create-nutrition-redirect">
             <h1 className = "overview-title">Overview</h1>
-            <button className="record-nutrition"><Link to ="/nutrition/create" className = "record-link">Record Nutrition</Link></button>
+            <button className="record-nutrition-overview-btn"><Link to ="/nutrition/create" className = "record-link">Record Nutrition</Link></button>
       </div>
 
 

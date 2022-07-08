@@ -25,11 +25,11 @@ export default function NutritionCard(props) {
       </div>
       <div className = "nutrition-info-container">
         <span className = "card-calories-container">
-          <h3>Calories:</h3>
+          <h3 className ="calorie-title">Calories:</h3>
           <p className = "nutrition-calories">{props.calories}</p>
         </span>
         <span className = "card-quantity-container">
-          <h3>Quantity:</h3>
+          <h3 className = "quantity-title">Quantity:</h3>
           <p className = "nutrition-quantity"> {props.quantity}</p>
         </span>
       </div>

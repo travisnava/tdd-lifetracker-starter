@@ -4,12 +4,50 @@
 }
 
 .feed-title {
-    margin-right: 10%;
+    font-size: 56px;
 }
+
+.feed-title-container, .feed-btn-container{
+    display: flex;
+    justify-content: center;
+}
+
+.feed-btn-container {
+    margin-bottom: 5%;
+
+}
+
+
+
 .create-nutrition, .exercise-btn, .sleep-btn{
     display: flex;
     align-items: center;
     text-decoration: none;
+
+}
+
+.nutrition-btn, .exercise-btn, .sleep-btn {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    text-align: left;
+    width: 180px;
+    vertical-align: top;
+    padding: calc(.375rem - 3px) 60px calc(.375rem - 3px) 12px;
+    background-color: rgb(15, 98, 254);
+    font-size: 14px;
+    letter-spacing: 0.16px;
+    min-height: 32px;
+    line-height: 1.29;
+    color: #fff;
+    font-weight: 400;
+    margin-right: 1%;
+    transition: background 70ms cubic-bezier(0,0,.38,.9),box-shadow 70ms cubic-bezier(0,0,.38,.9),border-color 70ms cubic-bezier(0,0,.38,.9),outline 70ms cubic-bezier(0,0,.38,.9);
+}
+
+.nutrition-btn:hover, .exercise-btn:hover , .sleep-btn:hover  {
+    background-color: #0353e9;
 }
 
 
@@ -22,6 +60,7 @@
 .per-category-title, .per-day-title {
     display: flex;
     justify-content: center;
+    
 }
 
 
@@ -29,3 +68,4 @@
     display: flex;
     justify-content: center;
 }
+

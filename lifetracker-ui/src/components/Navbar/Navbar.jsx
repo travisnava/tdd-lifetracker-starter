@@ -1,6 +1,6 @@
 import * as React from "react"
 import "./Navbar.css"
-import codepathLogo from '../codepath_icon.webp'
+import codepathLogo from '../codepath.jpeg'
 
 //react imports
 import {Link} from 'react-router-dom';

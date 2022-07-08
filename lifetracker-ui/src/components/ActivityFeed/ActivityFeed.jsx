@@ -49,10 +49,13 @@ export default function ActivityFeed(props) {
         <div className = "feed-header">
             <span className="feed-title-container">
                 <h1 className ="feed-title">Activity Feed</h1>
-                <button className ="exercise-btn">Add Exercise</button>
-                <button className = "sleep-btn">Log Sleep</button>
-                <Link className = "create-nutrition" to ="/nutrition/create"><button className ="nutrition-btn">Record Nutrition</button></Link>
             </span>
+            <span className = "feed-btn-container">
+              <button className ="exercise-btn">Add Exercise</button>
+              <button className = "sleep-btn">Log Sleep</button>
+              <Link className = "create-nutrition" to ="/nutrition/create"><button className ="nutrition-btn">Record Nutrition</button></Link>
+            </span>
+
         </div>
         <h2 className = "per-category-title">Average Calories Per Category</h2>
         <div className = "per-category">
