@@ -81,6 +81,10 @@ class ApiClient {
         return await this.request({endpoint: `nutrition`, method: `GET`})
     }
 
+    async getCalorieStatistics() {
+        return await this.request({endpoint: `activity`, method: `GET`})
+    }
+
 } 
 
 

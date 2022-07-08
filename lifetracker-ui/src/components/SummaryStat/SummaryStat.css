@@ -1,0 +1,10 @@
+.summary-stat {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 3%;
+    background-color: rgb(112, 110, 110);
+    width: 300px;
+    height: 200px;
+    border-radius: 10%;
+    margin-right: 5%;
+}

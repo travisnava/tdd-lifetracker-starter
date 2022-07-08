@@ -9,10 +9,12 @@ import apiClient from "../../services/apiClient"
 //react imports
 import { useState, useEffect } from "react"
 
+
+
 export default function NutritionFeed(props) {
 
 
-
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchNutritions = async () => {

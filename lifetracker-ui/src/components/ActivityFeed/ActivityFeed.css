@@ -3,7 +3,23 @@
     justify-content: center;
 }
 
+.feed-title {
+    margin-right: 10%;
+}
+.create-nutrition, .exercise-btn, .sleep-btn{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+
 .feed-title-container, .feed-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.per-category-title, .per-day-title {
     display: flex;
     justify-content: center;
 }

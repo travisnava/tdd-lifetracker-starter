@@ -11,7 +11,8 @@ import Loading from "../Loading/Loading"
 export default function ActivityPage(props) {
   return (
     <div className="activity-page">
-      {!props.user?.email ? <AccessForbidden/> : props.isLoading ?  <Loading/> : <ActivityFeed user = {props.user}/>}
+      {!props.user?.email ? <AccessForbidden/> : props.isLoading ?  <Loading/> 
+      : <ActivityFeed user = {props.user} nutritionData = {props.nutritionData} setNutritionData = {props.setNutritionData} isLoading = {props.isLoading} setIsLoading={props.setIsLoading}/>}
     </div>
   )
 }

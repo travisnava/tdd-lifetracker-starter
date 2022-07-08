@@ -28,12 +28,12 @@ export default function App() {
 
 
 
-//use state variables
-
+//state variables
 const [user, setUser] = useState({})
 const [isLoading, setIsLoading] = useState(false)
 const [error, setError] = useState(null)
 const [nutritions, setNutritions] = useState([])
+const [nutritionData, setNutritionData] = useState({})
 
 
 
@@ -80,7 +80,7 @@ const handleOnLogout = async () => {
               <Route path = "/" element = {<LandingPage/>} />
               <Route path = "/login" element = {<LoginPage user = {user} setUser = {setUser}/>} />
               <Route path = "/register" element = {<RegistrationPage user = {user} setUser = {setUser}/>} />
-              <Route path = "/activity" element = {<ActivityPage user = {user} isLoading = {isLoading}/>} />
+              <Route path = "/activity" element = {<ActivityPage user = {user} isLoading = {isLoading} setIsLoading = {setIsLoading} nutritionData = {nutritionData} setNutritionData = {setNutritionData}/>} />
               <Route path = "/nutrition" element = {<NutritionPage  user = {user} isLoading = {isLoading} nutritions = {nutritions} setNutritions = {setNutritions}/>} />
               <Route path = "/nutrition/create" element = {<NutritionNew nutritions = {nutritions} setNutritions = {setNutritions}/>} />
               <Route path = "/nutrition/id/:nutritionId" element = {<NutritionDetail nutritions = {nutritions} isLoading = {isLoading} setIsLoading = {setIsLoading}/>} />

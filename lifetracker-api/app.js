@@ -6,6 +6,7 @@ const security = require("./middleware/security")
 
 const authRoutes = require("./routes/auth")
 const nutritionRoutes = require("./routes/nutrition")
+const activityRoutes = require("./routes/activity")
 
 
 const app = express()
@@ -26,6 +27,7 @@ app.use(security.extractUserFromJwt)
 
 app.use("/auth", authRoutes)
 app.use("/nutrition", nutritionRoutes)
+app.use("/activity", activityRoutes)
 
 
 // health check
